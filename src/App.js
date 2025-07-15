@@ -1,11 +1,7 @@
-import "./App.css";
+import Body from "./components/Body";
 
 function App() {
-  return (
-    <div className="m-2 p-2 bg-slate-500">
-      Hare Krishna! let build Netflix GPT
-    </div>
-  );
+  return <Body />;
 }
 
 export default App;

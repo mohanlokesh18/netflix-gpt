@@ -2,6 +2,11 @@
 
 -create react app
 -configure tailwind
+-Routing of app
+-Header
+-Login form
+-sign up form
+-Form validation
 
 # Features
 
