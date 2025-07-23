@@ -7,6 +7,47 @@
 -Login form
 -sign up form
 -Form validation
+-useRef Hook
+-Firebase setup
+-Deployment our app in production
+-Create signup user account and add user to firebase
+-signIn registered user
+-Created redux toolkit with userSlice
+-user pushed to store on signin or signup and removed used from store on signout
+-added sigout features
+-redirected user
+-Bugfix for the navigation, shifter the onAuthStateChanged from body to header
+-Bugfix as the onAuthStateChanged is moved to header this will call every time the header is loaded hence make use of unsubscribe to stop onAuthStateChanged listening on the component unmount
+-add hardcode values to constant.js
+-also updated store with user name
+-Regiter TMDB API & create an app & get access token
+-Get Data from TMDB now playing movies list API
+-Custom Hook for Now Playing Movies
+-Create movieSlice
+-Update Store with movies Data
+-Planning for MainContauiner & secondary container
+-Fetch Data for Trailer Video
+-Update Store with Trailer Video Data
+-Embedded the Yotube video and make it autoplay and mute
+-Tailwind Classes to make Main Container look awesome
+-Build Secondary Component
+-Build Movie List
+-build Movie Card
+-TMDB Image CDN URL
+-Made the Browsre page amazing with Tailwind CSS
+-usePopularMovies Custom hook
+-GPT Search Page
+-GPT Search Bar
+-(BONUS) Multi-language Feature in our App)
+-Get Open AI Api Key
+-Gpt Search API Call
+-fetched gptMoviesSuggestions from TMDB
+-created gptSlice added data
+-Resused Movie List component to make movie suggestion container
+-Memoization
+-Added .env file
+-Adding .env file to gitignore
+-Made our Site Responsive
 
 # Features
 

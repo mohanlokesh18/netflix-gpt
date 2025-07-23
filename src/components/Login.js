@@ -4,6 +4,14 @@ import { useRef, useState } from "react";
 import { BG_URL } from "../utils/constants";
 import Header from "./Header";
 import { validateSignInUp } from "../utils/validateSignInUpForm";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
+import { auth } from "../utils/firebase";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
 
 const Login = () => {
   const [isSingIn, setIsSignIn] = useState(true);
@@ -11,11 +19,20 @@ const Login = () => {
   const email = useRef(null);
   const password = useRef(null);
   const name = useRef(null);
+  const dispatch = useDispatch();
   const handelClick = () => {
     setIsSignIn(!isSingIn);
     setError(null);
   };
   const handelFormClick = () => {
+    if (!isSingIn) {
+      const isNameValid = /^[A-Za-z ]{3,}$/.test(name.current.value);
+      setError(null);
+      if (!isNameValid) {
+        setError("Name is invalid");
+        return;
+      }
+    }
     const message = validateSignInUp(
       email.current.value,
       password.current.value
@@ -25,18 +42,55 @@ const Login = () => {
       setError(message);
       return;
     }
-
     if (!isSingIn) {
-      const isNameValid = /^[A-Za-z ]{3,}$/.test(name.current.value);
-      if (!isNameValid) {
-        setError("Name is invalid");
-        return;
-      }
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          const user = userCredential.user;
+          updateProfile(user, {
+            displayName: name?.current.value,
+          })
+            .then(() => {
+              const { uid, email, displayName } = auth.currentUser;
+              dispatch(
+                addUser({
+                  uid: uid,
+                  email: email,
+                  displayName: displayName,
+                })
+              );
+            })
+            .catch((error) => {
+              setError(error);
+            });
+          setError(null);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setError(errorMessage);
+          // ..
+        });
+    } else {
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log(user);
+          setError(null);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setError(errorMessage);
+        });
     }
-
-    setError(null);
-
-    //form submission logic here...
   };
 
   return (
