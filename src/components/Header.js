@@ -38,7 +38,7 @@ const Header = () => {
     return () => unSubscribe();
   }, []);
   return (
-    <div className="absolute bg-gradient-to-b from-transparent to-black/50 w-full z-10 flex justify-between items-center">
+    <div className="absolute bg-gradient-to-b from-transparent to-black/50 w-full z-10 flex justify-between items-center box-border over">
       <div>
         <img className="w-48" src={LOGO} alt="LOGO"></img>
       </div>
