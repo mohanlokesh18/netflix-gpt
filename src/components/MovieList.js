@@ -11,7 +11,7 @@ const MovieList = () => {
   const upComingMovies = useSelector((state) => state.movies.upComingMovies);
   return (
     <div>
-      <div className="-mt-56 ">
+      <div className="-mt-56 pb-4 pt-2">
         {nowPlayingMovies && (
           <>
             <MovieCard title={"Now Playing"} moviePoster={nowPlayingMovies} />

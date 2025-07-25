@@ -6,33 +6,35 @@ import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
 import usePopularMovies from "../hooks/usePopularMovies";
 import useTopRatedMovies from "../hooks/useTopRatedMovies";
 import useUpComingMovies from "../hooks/useUpComingMovies";
+import GptMovieSearch from "./GptMovieSearch";
+import { useSelector } from "react-redux";
 
 const Browse = () => {
   useNowPlayingMovies();
   usePopularMovies();
   useTopRatedMovies();
   useUpComingMovies();
+  const gptSearch = useSelector((state) => state.gpt.gptSearchToggle);
   return (
     <div className="">
       <div className="">
         <Header />
       </div>
       <div className="">
-        {/* 
-        -Maincontainer
-          -trailer
-          -name
-          -details
-        -Secondary container
-          -movie recomendation
-          -movies card
-        */}
-        <div>
-          <MainContainer />
-        </div>
-        <div>
-          <SecondaryContainer />
-        </div>
+        {gptSearch ? (
+          <div>
+            <GptMovieSearch />
+          </div>
+        ) : (
+          <>
+            <div>
+              <MainContainer />
+            </div>
+            <div>
+              <SecondaryContainer />
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
