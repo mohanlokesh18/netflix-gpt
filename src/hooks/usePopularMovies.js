@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { API_OPTIONS } from "../utils/constants";
+import { API_OPTIONS } from "../utils/constants.js";
 import { useDispatch } from "react-redux";
-import { popularMovies } from "../utils/movieSlice";
+import { popularMovies } from "../utils/movieSlice.js";
 
 const usePopularMovies = () => {
   const dispatch = useDispatch();

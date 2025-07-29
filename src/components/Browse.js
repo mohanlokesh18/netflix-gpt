@@ -1,12 +1,12 @@
 import React from "react";
-import Header from "./Header";
-import MainContainer from "./MainContainer";
-import SecondaryContainer from "./SecondaryContainer";
-import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
-import usePopularMovies from "../hooks/usePopularMovies";
-import useTopRatedMovies from "../hooks/useTopRatedMovies";
-import useUpComingMovies from "../hooks/useUpComingMovies";
-import GptMovieSearch from "./GptMovieSearch";
+import Header from "./Header.js";
+import MainContainer from "./MainContainer.js";
+import SecondaryContainer from "./SecondaryContainer.js";
+import useNowPlayingMovies from "../hooks/useNowPlayingMovies.js";
+import usePopularMovies from "../hooks/usePopularMovies.js";
+import useTopRatedMovies from "../hooks/useTopRatedMovies.js";
+import useUpComingMovies from "../hooks/useUpComingMovies.js";
+import GptMovieSearch from "./GptMovieSearch.js";
 import { useSelector } from "react-redux";
 
 const Browse = () => {

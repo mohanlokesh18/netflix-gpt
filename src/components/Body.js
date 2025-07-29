@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Login from "./Login";
-import Browse from "./Browse";
+import Login from "./Login.js";
+import Browse from "./Browse.js";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const Body = () => {

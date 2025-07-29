@@ -1,17 +1,17 @@
 // import React from 'react'
 
 import { useRef, useState } from "react";
-import { BG_URL } from "../utils/constants";
-import Header from "./Header";
-import { validateSignInUp } from "../utils/validateSignInUpForm";
+import { BG_URL } from "../utils/constants.js";
+import Header from "./Header.js";
+import { validateSignInUp } from "../utils/validateSignInUpForm.js";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import { auth } from "../utils/firebase";
+import { auth } from "../utils/firebase.js";
 import { useDispatch } from "react-redux";
-import { addUser } from "../utils/userSlice";
+import { addUser } from "../utils/userSlice.js";
 
 const Login = () => {
   const [isSingIn, setIsSignIn] = useState(true);
@@ -106,7 +106,7 @@ const Login = () => {
       <div className="flex items-center justify-center h-screen">
         <form
           onSubmit={(e) => e.preventDefault()}
-          className="bg-black bg-opacity-80 text-white w-3/12 p-12 rounded-md"
+          className="bg-black bg-opacity-80 text-white sm:w-10/12 md:w-3/12 w-auto p-12 rounded-md"
         >
           <h2 className="text-2xl font-bold mb-6">
             {isSingIn ? "Sign In" : "Sign Up"}

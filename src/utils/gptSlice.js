@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import reducer from "./userSlice";
+import reducer from "./userSlice.js";
 
 const gptSlice = createSlice({
   name: "gpt",

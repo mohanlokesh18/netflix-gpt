@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { LOGO, USER_AVATAR } from "../utils/constants";
-import { auth } from "../utils/firebase";
+import { LOGO, USER_AVATAR } from "../utils/constants.js";
+import { auth } from "../utils/firebase.js";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addUser, removeUser } from "../utils/userSlice";
-import GptMovieSearch from "./GptMovieSearch";
-import { setGptSearchFlag, userLang } from "../utils/gptSlice";
-import { lang } from "../utils/langConstants";
+import { addUser, removeUser } from "../utils/userSlice.js";
+import { setGptSearchFlag, userLang } from "../utils/gptSlice.js";
+import { lang } from "../utils/langConstants.js";
 
 const Header = () => {
   let userData = useSelector((state) => state?.user || null);
@@ -49,9 +48,17 @@ const Header = () => {
     dispatch(userLang(e.target.value));
   };
   return (
-    <div className=" fixed bg-gradient-to-b from-transparent to-black/50 w-full z-20 flex justify-between items-center box-border over">
-      <div>
+    <div
+      onClick={() => {
+        flag && setFlag(false);
+      }}
+      className=" fixed bg-gradient-to-b from-transparent to-black/50 w-full z-20 flex sm:justify-between justify-center items-center box-border over"
+    >
+      <div className="">
         <img className="w-48" src={LOGO} alt="LOGO"></img>
+        <h1 className="text-red-600 text-2xl -mt-7 font-semibold flex justify-center ">
+          GPT
+        </h1>
       </div>
       {userData && (
         <div className="flex">
@@ -59,24 +66,30 @@ const Header = () => {
             <div className="flex justify-center items-center text-white">
               <select
                 onChange={handleLangSelected}
-                className="bg-black border-gray-500 rounded-md border-[2px] focus:border-gray-500 focus:outline-none"
+                className="bg-black border-gray-500 text-sm sm:text-lg rounded-md border-[2px] focus:border-gray-500 focus:outline-none"
               >
-                <option value="en">English</option>
-                <option value="ka">ಕನ್ನಡ</option>
-                <option value="hi">हिंदी</option>
+                <option className="text-xs sm:text-lg" value="en">
+                  English
+                </option>
+                <option className="text-xs sm:text-lg" value="ka">
+                  ಕನ್ನಡ
+                </option>
+                <option className="text-xs sm:text-lg" value="hi">
+                  हिंदी
+                </option>
               </select>
             </div>
           )}
           <div className=" flex justify-center items-center">
             <button
-              className="bg-red-700 p-2 mx-4 rounded-full text-xl font-mono"
+              className="bg-red-700 sm:p-2 mx-4 sm:rounded-full sm:text-xl text-sm font-mono"
               onClick={handleGptSearchBtn}
             >
               {gptSearchFlag ? lang[langSelected]?.homeButtonTxt : "GPT Search"}
             </button>
           </div>
           <img
-            className="w-12 h-12 mr-4 cursor-pointer"
+            className="sm:w-12 w-8 sm:h-12 h-8 mr-4 cursor-pointer z-30"
             onClick={() => {
               setFlag(!flag);
             }}
